@@ -64,7 +64,7 @@ double sampleNormal();
 
 int main(int argc, const char * argv[]) {
     //从文件中输入训练集, 参数初始化(标准正态分布), 正则化
-    input("/Users/zhangming/Documents/code/C/data_mining_4/data_mining_4/train.csv");
+    input("train.csv");
     initialization();
     normalization();
     
@@ -165,12 +165,12 @@ int main(int argc, const char * argv[]) {
     }
     cout << "方差：" << squre/training_set.size() << endl;
     
-    ifstream testin("/Users/zhangming/Documents/code/C/data_mining_4/data_mining_4/test.csv");
+    ifstream testin("test.csv");
     if (!testin.good()) {
         cout << "file open failed\n";
         return 0;
     }
-    ofstream testout("/Users/zhangming/Documents/code/C/data_mining_4/data_mining_4/testout.csv");
+    ofstream testout("testout.csv");
     testout << "Id,reference\n";
     int count = 0;
     string str, num;
@@ -221,7 +221,7 @@ void initialization() {
      */
     int para[LAYER] = NODE_EACH_LAYER;
     srand((unsigned int)time(0));
-    ofstream para_out("/Users/zhangming/Documents/code/C/data_mining_4/data_mining_4/para.ini", 'w');
+    ofstream para_out("para.ini", 'w');
     for (int i = 0; i < LAYER-1; i++) {
         for (int j = 0; j < para[i]; j++) {
             for (int k = 0; k < para[i+1]; k++) {
@@ -234,7 +234,7 @@ void initialization() {
         }
     }
     para_out.close();
-    ifstream para_in("/Users/zhangming/Documents/code/C/data_mining_4/data_mining_4/para.ini", 'r');
+    ifstream para_in("para.ini", 'r');
     double num;
     for (int i = 0; i < LAYER-1; i++) {
         vector<vector<double> > temp_out;
